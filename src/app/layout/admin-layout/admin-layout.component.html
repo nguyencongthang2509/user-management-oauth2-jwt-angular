@@ -1,0 +1,29 @@
+<!-- admin-layout.component.html -->
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(isHandset$ | async) ? 'over' : 'side'"
+               [opened]="!(isHandset$ | async)">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/dashboard">Dashboard</a>
+      <a mat-list-item routerLink="/users">Users</a>
+      <!-- Add more sidebar links here -->
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button mat-icon-button (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Admin Dashboard</span>
+      <!-- Add header content here -->
+    </mat-toolbar>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+    <mat-toolbar color="primary" class="footer">
+      <!-- Add footer content here -->
+    </mat-toolbar>
+  </mat-sidenav-content>
+</mat-sidenav-container>
